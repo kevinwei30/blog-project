@@ -1,0 +1,44 @@
+{
+  "name": "my-blog-project",
+  "version": "1.0.0",
+  "description": "my blog project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://kevinwei30@gitlab.punwave.com/kevinwei30/my-blog-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel": "^6.23.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "html-webpack-plugin": "^2.29.0",
+    "immutable": "^3.8.1",
+    "mocha": "^3.4.2",
+    "mongoose": "^4.11.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-immutable": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "webpack": "^3.3.0",
+    "webpack-dev-middleware": "^1.11.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
