@@ -9,7 +9,11 @@ var bodyParser = require('body-parser')
 var routes = require('./routers/index')
 var port = process.env.PORT || 6308
 
-app.use(webpackMiddleware(compiler))
+app.use(webpackMiddleware(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}))
+app.use(require('webpack-hot-middleware')(compiler))
 
 app.use(bodyParser.json())
 app.use('/', routes)

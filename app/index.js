@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import App from './components/App'
-import PostList from './components/PostList'
-import PostPage from './components/PostPage'
-import EditPage from './components/EditPage'
+import PostList from './components/PostListRedux'
+import PostPage from './components/PostPageRedux'
+import EditPage from './components/EditPostRedux'
 
 import { Router, Route, IndexRoute } from 'react-router'
 import { Provider } from 'react-redux'

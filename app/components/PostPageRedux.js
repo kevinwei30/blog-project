@@ -1,17 +1,5 @@
 import React from 'react'
-// import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
-
-// 開始建設 Component 並使用 connect 進來的 props 並綁定事件（onChange、onClick）。注意我們的 state 因為是使用 `ImmutableJS` 所以要用 `get()` 取值
-
-var h1Style = {
-  marginTop: '50px',
-  marginBottom: '20px',
-  marginLeft: '100px',
-  marginRight: '100px',
-  paddingBottom: '20px',
-  borderBottom: '1px solid gray'
-}
+import { Link } from 'react-router'
 
 var postStyle = {
   fontFamily: 'arial, sans-serif',
@@ -28,19 +16,19 @@ var contentStyle = {
 }
 
 const PostPageR = ({
-  onInitPost,
-  post
+  posts,
+  params
 }) => {
+  console.log(posts, params)
+  const i = posts.findIndex((post) => String(post.id) === params.postId)
+  const post = posts[i]
   return (
-    <div>
-      <h1 style={h1Style}><a href='/'>My blog</a></h1>
-      <div style={postStyle}>
-        <h3>{post.get('title')}</h3><br />
-        <h5 style={contentStyle}>{post.get('content')}</h5><br />
-        <h6>Author: {post.get('author')}</h6><br />
-        <Link to={'/edit/' + post.get('id')} onClick={onInitPost(post.get('id'))}>編輯</Link><br /><br />
-        <Link to={'/'}>返回</Link>
-      </div>
+    <div style={postStyle}>
+      <h3>{post.title}</h3><br />
+      <h5 style={contentStyle}>{post.content}</h5><br />
+      <h6>Author: {post.author}</h6><br />
+      <Link to={'/edit/' + post.id}>編輯</Link><br /><br />
+      <Link to={'/'}>返回</Link>
     </div>
   )
 }

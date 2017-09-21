@@ -1,17 +1,5 @@
 import React from 'react'
-// import ReactDOM from 'react-dom'
-import { Redirect, Link } from 'react-router-dom'
-
-// 開始建設 Component 並使用 connect 進來的 props 並綁定事件（onChange、onClick）。注意我們的 state 因為是使用 `ImmutableJS` 所以要用 `get()` 取值
-
-var h1Style = {
-  marginTop: '50px',
-  marginBottom: '20px',
-  marginLeft: '100px',
-  marginRight: '100px',
-  paddingBottom: '20px',
-  borderBottom: '1px solid gray'
-}
+import { Redirect, Link } from 'react-router'
 
 var postStyle = {
   fontFamily: 'arial, sans-serif',
@@ -26,33 +14,50 @@ var contentStyle = {
   padding: '10px'
 }
 
-const EditPostR = ({
-  onChangePost,
-  onCreatePost,
-  post,
-  redirectToNewPage
-}) => {
-  if (redirectToNewPage === true) {
-    return (
-      <Redirect to='/' />
-    )
-  } else {
+const EditPostR = React.createClass({
+  handleSubmit (e) {
+    e.preventDefault()
+    const { postId } = this.props.params
+    const title = this.refs.title.value
+    const author = this.refs.author.value
+    const content = this.refs.content.value
+    if (postId === 'new') {
+      this.props.createPost(title, author, content)
+      console.log('new!')
+    } else {
+      this.props.changePost(parseInt(postId), title, author, content)
+      console.log('change!')
+    }
+    // this.refs.postForm.reset()
+    // window.location = '/'
+  },
+  render () {
+    const { postId } = this.props.params
+    const posts = this.props.posts
+    var post = {
+      title: '',
+      content: '',
+      author: ''
+    }
+    if (postId !== 'new') {
+      const i = posts.findIndex((post) => String(post.id) === postId)
+      post = posts[i]
+    }
     return (
       <div>
-        <h1 style={h1Style}><a href='/'>My blog</a></h1>
-        <div style={postStyle}>
+        <form style={postStyle} ref='postForm' onSubmit={this.handleSubmit}>
           Title: <br />
-          <input type='text' name='title' value={post.get('title')} onChange={onChangePost} /><br />
+          <input type='text' ref='title' defaultValue={post.title} /><br />
           Content: <br />
-          <textarea style={contentStyle} type='text' name='content' value={post.get('content')} onChange={onChangePost} /><br />
+          <textarea style={contentStyle} type='text' ref='content' defaultValue={post.content} /><br />
           Author: <br />
-          <input type='text' name='author' value={post.get('author')} onChange={onChangePost} /><br /><br />
-          <Link to={'/'}><button onClick={onCreatePost}>送出</button></Link><br /><br />
+          <input type='text' ref='author' defaultValue={post.author} /><br /><br />
+          <input type='submit' value='送出' /><br /><br />
           <Link to={'/'}>放棄</Link>
-        </div>
+        </form>
       </div>
     )
   }
-}
+})
 
 export default EditPostR
