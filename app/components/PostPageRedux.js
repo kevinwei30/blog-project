@@ -20,8 +20,8 @@ const PostPageR = ({
   params
 }) => {
   var post = {}
-  if (posts.length > 0) {
-    const i = posts.findIndex((post) => String(post.id) === params.postId)
+  const i = posts.findIndex((post) => String(post.id) === params.postId)
+  if (i >= 0) {
     post = posts[i]
   }
   return (

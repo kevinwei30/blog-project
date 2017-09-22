@@ -37,8 +37,8 @@ const EditPostR = React.createClass({
     const { postId } = this.props.params
     const posts = this.props.posts
     var post = {}
-    if (postId !== 'new' && posts.length > 0) {
-      const i = posts.findIndex((post) => String(post.id) === postId)
+    const i = posts.findIndex((post) => String(post.id) === postId)
+    if (i >= 0) {
       post = posts[i]
     }
     return (
