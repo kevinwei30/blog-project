@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('./webpack.config.js')
 const compiler = webpack(config)
 
@@ -13,7 +14,7 @@ app.use(webpackMiddleware(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
 }))
-app.use(require('webpack-hot-middleware')(compiler))
+app.use(webpackHotMiddleware(compiler))
 
 app.use(bodyParser.json())
 app.use('/', routes)

@@ -17,6 +17,7 @@ router.route('/post/*').get(function (req, res) {
 router.route('/edit/*').get(function (req, res) {
   res.sendFile(path.join(__dirname, '../index.html'))
 })
+
 router.route('/posts').get(allPosts).post(newPost)
 router.route('/posts/:id').get(onePost).delete(deletePost).put(modifyPost)
 

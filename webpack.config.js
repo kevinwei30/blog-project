@@ -1,4 +1,4 @@
-var path = require('path')
+// var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
@@ -16,8 +16,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        // include: path.join(__dirname, 'app')
+        loader: 'babel-loader'
       }
     ]
   },
