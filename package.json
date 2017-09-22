@@ -1,7 +1,7 @@
 {
-  "name": "my-blog-project",
+  "name": "blog-project",
   "version": "1.0.0",
-  "description": "my blog project",
+  "description": "my blog project with React & Redux",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://kevinwei30@gitlab.punwave.com/kevinwei30/my-blog-project.git"
+    "url": "https://github.com/kevinwei30/blog-project.git"
   },
   "author": "",
   "license": "ISC",
