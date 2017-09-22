@@ -22,24 +22,22 @@ const EditPostR = React.createClass({
     const author = this.refs.author.value
     const content = this.refs.content.value
     if (postId === 'new') {
-      this.props.createPost(title, author, content)
+      // this.props.createPost(title, author, content)
+      this.props.postNewPost(title, author, content)
       console.log('new!')
     } else {
-      this.props.changePost(parseInt(postId), title, author, content)
+      // this.props.changePost(parseInt(postId), title, author, content)
+      this.props.changeOnePost(parseInt(postId), title, author, content)
       console.log('change!')
     }
     // this.refs.postForm.reset()
-    // window.location = '/'
+    window.location = '/'
   },
   render () {
     const { postId } = this.props.params
     const posts = this.props.posts
-    var post = {
-      title: '',
-      content: '',
-      author: ''
-    }
-    if (postId !== 'new') {
+    var post = {}
+    if (postId !== 'new' && posts.length > 0) {
       const i = posts.findIndex((post) => String(post.id) === postId)
       post = posts[i]
     }

@@ -1,8 +1,10 @@
 import {
   CREATE_POST,
   DELETE_POST,
-  CHANGE_POST
+  CHANGE_POST,
+  INIT_POSTS
 } from '../constants/actionTypes'
+import axios from 'axios'
 
 let nextPostId = 0
 export const createPost = (title, author, content) => {
@@ -29,5 +31,50 @@ export const changePost = (id, title, author, content) => {
     title,
     author,
     content
+  }
+}
+
+const receivePosts = (posts) => {
+  return {
+    type: INIT_POSTS,
+    posts
+  }
+}
+
+export const getPosts = () => {
+  return function (dispatch) {
+    return axios.get('/posts')
+      .then(res => res.data)
+      .then(posts => {
+        nextPostId = posts[posts.length - 1].id + 1
+        dispatch(receivePosts(posts))
+      })
+  }
+}
+
+export const postNewPost = (title, author, content) => {
+  return function (dispatch) {
+    return axios.post('/posts', {
+      id: nextPostId++,
+      title,
+      content,
+      author
+    })
+  }
+}
+
+export const deleteOnePost = (id) => {
+  return function (dispatch) {
+    return axios.delete(`/posts/${id}`)
+  }
+}
+
+export const changeOnePost = (id, title, author, content) => {
+  return function (dispatch) {
+    return axios.put(`/posts/${id}`, {
+      title,
+      content,
+      author
+    })
   }
 }

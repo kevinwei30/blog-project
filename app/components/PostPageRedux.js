@@ -19,9 +19,11 @@ const PostPageR = ({
   posts,
   params
 }) => {
-  console.log(posts, params)
-  const i = posts.findIndex((post) => String(post.id) === params.postId)
-  const post = posts[i]
+  var post = {}
+  if (posts.length > 0) {
+    const i = posts.findIndex((post) => String(post.id) === params.postId)
+    post = posts[i]
+  }
   return (
     <div style={postStyle}>
       <h3>{post.title}</h3><br />

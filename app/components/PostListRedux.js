@@ -26,7 +26,7 @@ var thStyle1 = {
 
 const PostListR = ({
   posts,
-  deletePost
+  deleteOnePost
 }) => (
   <div>
     <h3 style={h3Style}><Link to={'/edit/new'}>新增文章</Link></h3>
@@ -46,7 +46,7 @@ const PostListR = ({
               <th style={thStyle1}><Link to={'/post/' + post.id}>{post.title}</Link></th>
               <th style={thStyle}>{post.author}</th>
               <th style={thStyle}><Link to={'/edit/' + post.id}>編輯</Link></th>
-              <th style={thStyle}><Link to='/' onClick={deletePost.bind(null, index)}>刪除</Link></th>
+              <th style={thStyle}><a href='/' onClick={deleteOnePost.bind(null, post.id)}>刪除</a></th>
             </tr>
           ))
         }
