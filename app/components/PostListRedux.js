@@ -29,7 +29,7 @@ const PostListR = ({
   deleteOnePost
 }) => (
   <div>
-    <h3 style={h3Style}><Link to={'/edit/new'}>新增文章</Link></h3>
+    <h3 style={h3Style}><Link to={'/new'}>新增文章</Link></h3>
     <table style={tableStyle}>
       <tbody>
         <tr>
