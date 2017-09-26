@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import posts from './postReducers'
+import { combineEpics } from 'redux-observable'
+import fetchPostsEpic from './postEpic'
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   posts,
   routing: routerReducer
 })
 
-export default rootReducer
+export const rootEpic = combineEpics(
+  fetchPostsEpic
+)

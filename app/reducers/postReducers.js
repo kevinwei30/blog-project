@@ -2,7 +2,7 @@ import {
   CREATE_POST,
   DELETE_POST,
   CHANGE_POST,
-  INIT_POSTS
+  RECEIVE_POSTS
 } from '../constants/actionTypes'
 
 const post = (state = {}, action) => {
@@ -43,7 +43,7 @@ const posts = (state = [], action) => {
       ]
     case CHANGE_POST:
       return state.map(p => post(p, action))
-    case INIT_POSTS:
+    case RECEIVE_POSTS:
       return action.posts
     default:
       return state

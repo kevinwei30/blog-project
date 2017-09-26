@@ -2,7 +2,8 @@ import {
   CREATE_POST,
   DELETE_POST,
   CHANGE_POST,
-  INIT_POSTS
+  FETCH_POSTS,
+  RECEIVE_POSTS
 } from '../constants/actionTypes'
 import axios from 'axios'
 
@@ -34,9 +35,15 @@ export const changePost = (id, title, author, content) => {
   }
 }
 
-const receivePosts = (posts) => {
+export const fetchPosts = () => {
   return {
-    type: INIT_POSTS,
+    type: FETCH_POSTS
+  }
+}
+
+export const receivePosts = (posts) => {
+  return {
+    type: RECEIVE_POSTS,
     posts
   }
 }
