@@ -3,7 +3,7 @@ import { FETCH_POSTS } from '../constants/actionTypes'
 import { receivePosts } from '../actions/index'
 import 'rxjs'
 
-const fetchPostsEpic = action$ => {
+export const fetchPostsEpic = action$ => {
   return action$.ofType(FETCH_POSTS)
     .mergeMap(action =>
       ajax.get('/posts')
@@ -13,5 +13,3 @@ const fetchPostsEpic = action$ => {
         })
     )
 }
-
-export default fetchPostsEpic
